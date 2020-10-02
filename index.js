@@ -10,6 +10,17 @@ const server = new ApolloServer({
 	resolvers,
 	introspection: true,
 	playground: true,
+	context: ({ req }) => {
+		const token = req.headers.authorization || "";
+
+		// try to retrieve a user with the token
+		if (token === "123") {
+			return { loggedIn: true };
+		}
+
+		// add the user to the context
+		return { loggedIn: false };
+	},
 });
 
 const app = express();
