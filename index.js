@@ -17,7 +17,8 @@ const server = new ApolloServer({
 		if (token === "123") {
 			return { loggedIn: true };
 		} else {
-			throw new AuthenticationError("token incorrecto");
+			//throw new AuthenticationError("token incorrecto");
+			return { loggedIn: false };
 		}
 	},
 });
