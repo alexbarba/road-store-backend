@@ -16,10 +16,9 @@ const server = new ApolloServer({
 		// try to retrieve a user with the token
 		if (token === "123") {
 			return { loggedIn: true };
+		} else {
+			throw new AuthenticationError("token incorrecto");
 		}
-
-		// add the user to the context
-		return { loggedIn: false };
 	},
 });
 
